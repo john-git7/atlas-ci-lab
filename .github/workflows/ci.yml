@@ -16,14 +16,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
 
-#tests are failing why?it completed with exit code 1.fix it.the tests are passing in your local environment but failing in the CI environment. This could be due to differences in the environment, missing dependencies, or configuration issues. Here are some steps to troubleshoot and you need to fix the issue:
-
       - name: Run tests
         run: npm test
+
 
 
