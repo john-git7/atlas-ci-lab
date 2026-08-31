@@ -24,13 +24,12 @@ jobs:
       - name: Run tests
         run: npm test
 
-    deploy-check:
-    needs: test
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
       - name: Deploy
+        needs: test
+        permissions:
+           contents: read
         run: echo "Deploying with token $APP_TOKEN"
         env:
           APP_TOKEN: ${{ secrets.APP_TOKEN }}
+
+    
