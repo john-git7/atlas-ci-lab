@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
@@ -24,4 +24,13 @@ jobs:
       - name: Run tests
         run: npm test
 
-
+    deploy-check:
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Deploy
+        run: echo "Deploying with token $APP_TOKEN"
+        env:
+          APP_TOKEN: ${{ secrets.APP_TOKEN }}
